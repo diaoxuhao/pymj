@@ -185,8 +185,14 @@ def mylist():
 	e = functools.reduce(lambda a,b:a+b,x)
 	print(e);
 
-a = [];
-a.append(1);
-a.append("ha");
-print(a);
+#a = [];
+#a.append(1);
+#a.append("ha");
+#print(a);
 
+#what's your name?
+
+a = "diaoxuhao ";
+a = a.replace("xu","XU");
+a = a.strip();
+print(a)
