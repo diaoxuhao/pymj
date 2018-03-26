@@ -192,7 +192,25 @@ def mylist():
 
 #what's your name?
 
-a = "diaoxuhao ";
-a = a.replace("xu","XU");
-a = a.strip();
-print(a)
+#a = "diaoxuhao ";
+#a = a.replace("xu","XU");
+#a = a.strip();
+#print(a)
+
+#a = "the {} of 2+5 is {}".format("sum",1+2);
+#print(a)
+def list_append():	
+	a = ["a","b","c"]
+	b = []
+	b.extend([a[0],a[2]]);
+	a.pop();
+	a.reverse();
+	c = a.copy();
+	print(a,b,end = "\n")
+
+a = [y for y in range(0,10) if y >=4];
+#print(min(a),max(a),len(a))
+a.sort(reverse=True)
+b = list(map(lambda x:x+1,a));
+print(b);
+
