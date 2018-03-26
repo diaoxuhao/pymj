@@ -208,9 +208,56 @@ def list_append():
 	c = a.copy();
 	print(a,b,end = "\n")
 
-a = [y for y in range(0,10) if y >=4];
-#print(min(a),max(a),len(a))
-a.sort(reverse=True)
-b = list(map(lambda x:x+1,a));
-print(b);
+#a = [y for y in range(0,10) if y >=4];
+##print(min(a),max(a),len(a))
+#a.sort(reverse=True)
+#b = list(map(lambda x:x+1,a));
+#w = "duaixuhao";
+#w.split(sep = None)
+#print(w);
 
+def my_tuple():
+	a = (1,2,3);
+	b = tuple(range(0,9));
+	c = tuple(map(lambda a:a+2,list(range(8))));
+	print(a,b,c)
+	for i in (1,2,5,6,8,3,4):
+		print(i)
+#
+#a = {n:(n+100)//2 for n in range(10)}
+#print(a.get(3))
+#print(a[3])
+#a["xuhao"] = -11;
+#print(a["xuhao"])
+#print(list(a.keys()))
+#print(set("diaouhaodashazi"))
+
+def accum(lst,init=0):
+	nsum = init
+	for x in lst:
+		nsum += x
+	return nsum
+
+
+def fab(Max): 
+    n, a, b = 0, 0, 1 
+    while n < Max: 
+        yield b 
+        a, b = b, a + b 
+        n = n + 1 
+#for n in fab(10):
+#	print(n)
+
+def my_file():
+	file1 = open("data.dat",'r');
+	file2 = open("out.dat",'w');
+	for line in file1:
+		line = line.strip();
+		a = line.split(" ")
+		file2.write(line);
+		print(a)
+	file2.flush();
+	file1.close()
+	file2.close()
+
+print(__name__)
