@@ -260,4 +260,44 @@ def my_file():
 	file1.close()
 	file2.close()
 
-print(__name__)
+class Rational0:
+	def __init__(self, num, den=1):
+		self._num = num;
+		self._den = den;
+	def num(self):
+		return self._num;
+	def den(self):
+		return self._den;
+	def plus(self,another):
+		n= (self._num * another._den
+			+ self._den * another._num)
+		d = self._den * another._den
+		return Rational0(n,d);
+	def print(self):
+		print("("+str(self._num)+"/"
+			+ str(self._den)+")")
+
+#Rational0(2,5).print()
+#Rational0(2,5).plus(Rational0(1,4)).print()
+
+
+class vector:
+	def __init__(self, mylist):
+		self._mylist = mylist;
+	def get(self,n):
+		return self._mylist[n]
+	def append(self,x):
+		self._mylist.append(x);
+		return self;
+	def __radd__(self,other):
+		for i in range(len(self)):
+			self[i] += other;
+			return self;
+
+#print([x**2 for x in range(100) if x%7==0])
+def use_of_generator():
+# 每次使用都在计算，没有存在内存中，能够节约内存！！！
+	it = (y for y in range(100))
+	result = (x for x in it if x>50)
+	for i in range(10):
+		print(next(result))
