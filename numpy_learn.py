@@ -1,12 +1,14 @@
 import numpy as np
 import pprint
-import krypy.linsys as kry
-from matplotlib.pyplot import semilogy, show, legend
+import matplotlib.pyplot as plt
+from scipy import linalg
 a = np.array([[1,2,3],
               [4,5,6],
 			  [7,8,9]])
 print("type = ",a.dtype,
-      "shape = ",a.shape)
+      "shape = ",a.shape,
+	  "rank = ",a.itemsize)
+
 
 b = np.arange(0,100,0.1)
 
@@ -30,8 +32,9 @@ print(c*np.array([1,1,1]).reshape(-1,1))
 d = c.transpose();
 pprint.pprint(d)
 pprint.pprint(np.transpose(c)*np.array([1,1,1]).reshape(-1,1))
-L = kry.LinearSystem(c,np.array([1,1,1]));
-solver = kry.Gmres(L)
-semilogy(solver.resnorms, label='original')
-legend()
-show()
+
+A = np.random.randn(100,100)
+B = np.sum(A,axis=1)
+pprint.pprint(B)
+x = linalg.solve(A,B)
+pprint.pprint(x)

@@ -301,3 +301,4 @@ def use_of_generator():
 	result = (x for x in it if x>50)
 	for i in range(10):
 		print(next(result))
+
