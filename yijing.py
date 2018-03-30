@@ -66,6 +66,7 @@ print("**"+mydic[str(Result_1)]+"**")
 R1 = R.copy()
 R.reverse()
 bian = []
+bubian = []
 for i in range(len(R)):
 	if R[i] == 6:
 		print("--  --","老阴*变")
@@ -73,12 +74,14 @@ for i in range(len(R)):
 		bian.append(5-i)
 	elif R[i] == 8:
 		print("--  --","少阴")
+		bubian.append(5-i)
 	elif R[i] == 9:
 		print("------","老阳*变")
 		R1[5-i] = 6
 		bian.append(5-i)
 	elif R[i] == 7:
 		print("------","少阳")
+		bubian.append(5-i)
 Result_2 = [y%2 for y in R1]
 if Result_2 != Result_1:
 	print("**之**")
@@ -112,7 +115,7 @@ if len(bian) == 1 or len(bian)==2:
 if len(bian)==3 or len(bian)==0:
 	mubiao = -2
 	flag = mubiao
-	print(mydic[str(Result_1)]+"卦之爻辞")
+	print(mydic[str(Result_1)]+"卦之卦辞")
 	for line in infile:
 		line = line.strip()
 		if line == mydic[str(Result_1)]:
@@ -122,7 +125,7 @@ if len(bian)==3 or len(bian)==0:
 		elif flag == -1:
 			print(line)
 			flag = mubiao
-if len(bian) == 4:
+if len(bian) == 4 or len(bian)==5:
 	mubiao = -2
 	flag = mubiao
 	print(mydic[str(Result_2)]+"卦之爻辞")
@@ -130,8 +133,28 @@ if len(bian) == 4:
 		line = line.strip()
 		if line == mydic[str(Result_2)]:
 			flag = mubiao+1
-		elif flag != mubiao and flag < bian[0]:
+		elif flag != mubiao and flag < bubian[0]:
 			flag += 1
-		elif flag == bian[0]:
+		elif flag == bubian[0]:
 			print(line)
 			flag = mubiao
+if len(bian) == 6:
+	if(mydic[str(Result_1)]=="乾"):
+		print("乾卦之用九")
+		print("见群龙天首，吉。")
+	elif(mydic[str(Result_1)]=="坤"):
+		print("坤卦之用六")
+		print("利永贞。")	
+	else:
+		mubiao = -2
+		flag = mubiao
+		print(mydic[str(Result_2)]+"卦之爻辞")
+		for line in infile:
+			line = line.strip()
+			if line == mydic[str(Result_2)]:
+				flag = mubiao+1
+			elif flag != mubiao and flag < bubian[0]:
+				flag += 1
+			elif flag == bubian[0]:
+				print(line)
+				flag = mubiao
